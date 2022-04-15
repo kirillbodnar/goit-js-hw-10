@@ -11,33 +11,31 @@ const refs = {
 
 const DEBOUNCE_DELAY = 300;
 
-refs.input.addEventListener('input', onInputChange);
+refs.input.addEventListener('input', debounce(onInputChange, DEBOUNCE_DELAY));
 
 function onInputChange(e) {
-  const name = e.currentTarget.value.trim();
+  const name = e.target.value.trim();
   if (name === '') {
     clearMarkUp();
     return;
   }
   fetchCountries(name)
     .then(countries => {
+      clearMarkUp();
       if (countries.length > 10) {
-        clearMarkUp();
         Notify.warning('Too many matches found. Please enter a more specific name.');
       } else if (countries.length <= 10 && countries.length > 1) {
         appendCountryListMarkUp(countries);
       } else if (countries.length === 1) {
-        clearMarkUp();
         appendCountryInfoMarkUp(countries[0]);
       }
     })
-    .catch(clearMarkUp());
+    .catch(clearMarkUp);
 }
 
 function createCountriesListMarkup(countries) {
   return countries
     .map(({ name, flags }) => {
-      clearMarkUp();
       return `
 <li class="country">
     <img class="country__flag" src="${flags.svg}" alt="${name.common}" width="50px">
@@ -48,7 +46,6 @@ function createCountriesListMarkup(countries) {
 }
 
 function createCountryInfoMarkup({ name, population, capital, flags, languages }) {
-  clearMarkUp();
   return `<img class="country__flag" src="${flags.svg}" alt="${name.common}" width="50px">
     <h1 class="country-info__name">${name.common}</h1>
     <ul class="country-info__list">
