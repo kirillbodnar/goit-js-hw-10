@@ -53,8 +53,10 @@ function createCountryInfoMarkup({ name, population, capital, flags, languages }
     language = 'Languages';
   }
 
-  return `<img class="country-info__flag" src="${flags.svg}" alt="${name.common}" width="50px">
+  return `<div class="country-info__wrapper">
+  <img class="country-info__flag" src="${flags.svg}" alt="${name.common}" width="50px">
     <h1 class="country-info__name">${name.common}</h1>
+    </div>
     <ul class="country-info__list">
     <li class="country-info__item"><span class="country-info__item--title">Capital:</span> ${capital}</li>
     <li class="country-info__item"><span class="country-info__item--title">Population:</span> ${population}</li>

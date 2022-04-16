@@ -55,14 +55,12 @@ body {
 }
 
 .country-info__name {
-  display: inline-block;
   margin-left: 10px;
   font-size: 40px;
-  vertical-align: bottom;
 }
 
 .country-info__list {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .country-info {
@@ -71,6 +69,11 @@ body {
 
 .country-info__flag {
   width: 70px;
+}
+
+.country-info__wrapper {
+  display: flex;
+  vertical-align: middle;
 }
 
 /* Country-list styles------------------------------------------------------------ */
