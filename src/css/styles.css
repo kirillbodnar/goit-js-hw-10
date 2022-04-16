@@ -58,6 +58,7 @@ body {
   display: inline-block;
   margin-left: 10px;
   font-size: 40px;
+  vertical-align: bottom;
 }
 
 .country-info__list {
