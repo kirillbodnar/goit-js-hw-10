@@ -37,7 +37,7 @@ function createCountriesListMarkup(countries) {
   return countries
     .map(({ name, flags }) => {
       return `
-<li class="country">
+<li class="country__item">
     <img class="country__flag" src="${flags.svg}" alt="${name.common}" width="50px">
     <p class="country__name">${name.common}</p>
     </li>`;
@@ -46,12 +46,14 @@ function createCountriesListMarkup(countries) {
 }
 
 function createCountryInfoMarkup({ name, population, capital, flags, languages }) {
-  return `<img class="country__flag" src="${flags.svg}" alt="${name.common}" width="50px">
+  return `<img class="country-info__flag" src="${flags.svg}" alt="${name.common}" width="50px">
     <h1 class="country-info__name">${name.common}</h1>
     <ul class="country-info__list">
-    <li class="country-info__item">Capital: ${capital}</li>
-    <li class="country-info__item">Population: ${population}</li>
-    <li class="country-info__item">Languages: ${Object.values(languages)}</li>
+    <li class="country-info__item"><span class="country-info__item--title">Capital:</span> ${capital}</li>
+    <li class="country-info__item"><span class="country-info__item--title">Population:</span> ${population}</li>
+    <li class="country-info__item"><span class="country-info__item--title">Languages:</span> ${Object.values(
+      languages,
+    )}</li>
     </ul> `;
 }
 
