@@ -46,14 +46,21 @@ function createCountriesListMarkup(countries) {
 }
 
 function createCountryInfoMarkup({ name, population, capital, flags, languages }) {
+  let language = 'null';
+  if (Object.keys(languages).length === 1) {
+    language = 'Language';
+  } else {
+    language = 'Languages';
+  }
+
   return `<img class="country-info__flag" src="${flags.svg}" alt="${name.common}" width="50px">
     <h1 class="country-info__name">${name.common}</h1>
     <ul class="country-info__list">
     <li class="country-info__item"><span class="country-info__item--title">Capital:</span> ${capital}</li>
     <li class="country-info__item"><span class="country-info__item--title">Population:</span> ${population}</li>
-    <li class="country-info__item"><span class="country-info__item--title">Languages:</span> ${Object.values(
-      languages,
-    )}</li>
+    <li class="country-info__item"><span class="country-info__item--title">${language}:</span> ${Object.values(
+    languages,
+  ).join(', ')}</li>
     </ul> `;
 }
 
